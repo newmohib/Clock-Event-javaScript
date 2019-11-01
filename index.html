@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var decreasetimeObj = {
+            hours: 01,
+            minutes: 01,
+            secounds: 10
+        }
+        var increasetimeObj = {
+            hours: 01,
+            minutes: 58,
+            secounds: 55
+        }
+    </script>
+    <button onclick="eventClock()">Show Clock</button>
+    <button onclick="decreaseStartClock(decreasetimeObj)">Decrease Start Clock</button>
+    <button onclick="increaseStartClock(increasetimeObj)">Increase Start Clock</button>
+
+    <h1>
+        <div id="myclock"></div>
+    </h1>
+    <h1>
+        <div id="eventClock"></div>
+    </h1>
+    <h1>
+        <div id="decrease"></div>
+    </h1>
+    <h1>
+        <div id="increase"></div>
+    </h1>
+
+
+    <script src="./lib/library.js"></script>
+</body>
+
+</html>
