@@ -10,15 +10,31 @@
 
 <body>
     <script>
-        var decreasetimeObj = {
+        var decreaseTimeObj = {
             hours: 01,
             minutes: 01,
-            secounds: 10
+            secounds: 10,
+            isStart:true,
+            elementName:"decrease",
+            key:"decreaseSetTime"
+        }
+        var decreaseStopTimeObj = {
+            isStart:false,
+            elementName:"decrease",
+            key:"decreaseSetTime"
         }
         var increasetimeObj = {
             hours: 01,
             minutes: 58,
-            secounds: 55
+            secounds: 55,
+            isStart:true,
+            elementName:"increase",
+            key:"increaseSetTime"
+        }
+        var increaseStopTimeObj = {
+            isStart:false,
+            elementName:"increase",
+            key:"increaseSetTime"
         }
     </script>
     <div
@@ -31,11 +47,15 @@
             <div id="eventClock"></div>
         </h1>
         <h1>
-            <button onclick="decreaseStartClock(decreasetimeObj)">Decrease Start Clock</button>
+            <button onclick="decreaseStartClock(decreaseTimeObj)">Decrease new Start Clock</button>
+            <button onclick="decreaseStartClock(decreaseStopTimeObj)">Decrease Pause Clock</button>
+            <button onclick="continueAfterPauseClock(decreaseTimeObj)">Decrease Start Clock</button>
             <div id="decrease"></div>
         </h1>
         <h1>
-            <button onclick="increaseStartClock(increasetimeObj)">Increase Start Clock</button>
+            <button onclick="increaseStartClock(increasetimeObj)">Increase new Start Clock</button>
+            <button onclick="increaseStartClock(increaseStopTimeObj)">Increase Pause Clock</button>
+            <button onclick="continueAfterPauseClock(increasetimeObj)">Increase Start Clock</button>
             <div id="increase"></div>
         </h1>
     </div>
