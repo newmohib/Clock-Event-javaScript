@@ -37,28 +37,9 @@
             elementId: "increase",
             key: "increaseSetTime"
         }
+
+      const newEventClock=()=>  eventClock();
     </script>
-    <!-- <div>
-        <h1>
-            <div id="myclock"></div>
-        </h1>
-        <h1>
-            <button onclick="eventClock()">View Start Clock</button>
-            <div id="eventClock"></div>
-        </h1>
-        <h1>
-            <button onclick="decreaseStartClock(decreaseTimeObj)">Decrease new Start Clock</button>
-            <button onclick="decreaseStartClock(decreaseStopTimeObj)">Decrease Pause Clock</button>
-            <button onclick="continueAfterPauseClock(decreaseTimeObj)">Decrease Start Clock</button>
-            <div id="decrease"></div>
-        </h1>
-        <h1>
-            <button onclick="increaseStartClock(increasetimeObj)">Increase new Start Clock</button>
-            <button onclick="increaseStartClock(increaseStopTimeObj)">Increase Pause Clock</button>
-            <button onclick="continueAfterPauseClock(increasetimeObj)">Increase Start Clock</button>
-            <div id="increase"></div>
-        </h1>
-    </div> -->
     <div class="container">
         <div class="row">
             <div class="col-12 ">
@@ -76,9 +57,10 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <button onclick="eventClock()" type="button"
+                                                <button  onclick="newEventClock()" type="button"
                                                     class="btn btn-primary my-2">View
-                                                    Start Clock</button>
+                                                    Start Clock
+                                                </button>
                                                 <div class="badge badge-info text-wrap p-3 my-3 d-block"
                                                     style=" font-size: 20px;" id="eventClock"></div>
                                             </div>
