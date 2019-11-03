@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -14,31 +15,30 @@
             hours: 01,
             minutes: 01,
             secounds: 10,
-            isStart:true,
-            elementName:"decrease",
-            key:"decreaseSetTime"
+            isStart: true,
+            elementId: "decrease",
+            key: "decreaseSetTime"
         }
         var decreaseStopTimeObj = {
-            isStart:false,
-            elementName:"decrease",
-            key:"decreaseSetTime"
+            isStart: false,
+            elementId: "decrease",
+            key: "decreaseSetTime"
         }
         var increasetimeObj = {
             hours: 01,
             minutes: 58,
             secounds: 55,
-            isStart:true,
-            elementName:"increase",
-            key:"increaseSetTime"
+            isStart: true,
+            elementId: "increase",
+            key: "increaseSetTime"
         }
         var increaseStopTimeObj = {
-            isStart:false,
-            elementName:"increase",
-            key:"increaseSetTime"
+            isStart: false,
+            elementId: "increase",
+            key: "increaseSetTime"
         }
     </script>
-    <div
-        style="width: 200px; margin-left: auto;margin-right: auto; margin-top: 100px;margin-bottom: auto;">
+    <!-- <div>
         <h1>
             <div id="myclock"></div>
         </h1>
@@ -58,8 +58,60 @@
             <button onclick="continueAfterPauseClock(increasetimeObj)">Increase Start Clock</button>
             <div id="increase"></div>
         </h1>
-    </div>
+    </div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 ">
+                <div class="container form-wrapper" style="height: calc(100vh - 65px)">
+                    <div class="row justify-content-center h-100">
+                        <div class="col-10 col-lg-6 col-md-8 col-sm-10 h-100 d-flex align-items-center">
+                            <div class="form-container formStyle">
+                                <h3 class="text-center headerStyle">Watch & Stopwatch</h3>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center">
+                                                <div class="badge badge-info text-wrap p-3 my-3 d-block"
+                                                    style=" font-size: 20px;" id="myclock">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button onclick="eventClock()" type="button"
+                                                    class="btn btn-primary my-2">View
+                                                    Start Clock</button>
+                                                <div class="badge badge-info text-wrap p-3 my-3 d-block"
+                                                    style=" font-size: 20px;" id="eventClock"></div>
+                                            </div>
 
+                                            <button onclick="decreaseStartClock(decreaseTimeObj)" type="button"
+                                                class="btn btn-primary">Decrease New Start</button>
+                                            <button onclick="decreaseStartClock(decreaseStopTimeObj)" type="button"
+                                                class="btn btn-danger">Decrease Puase</button>
+                                            <button onclick="continueAfterPauseClock(decreaseTimeObj)" type="button"
+                                                class="btn btn-success">Continue Start</button>
+
+                                            <div class="badge badge-info text-wrap p-3 my-3 d-block"
+                                                style=" font-size: 20px;" id="decrease"></div>
+
+                                            <button onclick="increaseStartClock(increasetimeObj)" type="button"
+                                                class="btn btn-primary">Increase New Start</button>
+                                            <button onclick="increaseStartClock(increaseStopTimeObj)" type="button"
+                                                class="btn btn-danger">Increase Puase</button>
+                                            <button onclick="continueAfterPauseClock(increasetimeObj)" type="button"
+                                                class="btn btn-success">Continue Start</button>
+                                            <div class="badge badge-info text-wrap p-3 my-3 d-block"
+                                                style=" font-size: 20px;" id="increase"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <script src="./lib/library.js"></script>
 </body>
 
