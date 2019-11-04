@@ -64,6 +64,17 @@
                                                 <div class="badge badge-info text-wrap p-3 my-3 d-block"
                                                     style=" font-size: 20px;" id="eventClock"></div>
                                             </div>
+                                            <hr>
+                                            <button onclick="increaseStartClock(increasetimeObj)" type="button"
+                                                class="btn btn-primary">Increase New Start</button>
+                                            <button onclick="increaseStartClock(increaseStopTimeObj)" type="button"
+                                                class="btn btn-danger">Increase Puase</button>
+                                            <button onclick="continueAfterPauseClock(increasetimeObj)" type="button"
+                                                class="btn btn-success">Continue Start</button>
+                                            <div class="badge badge-info text-wrap p-3 my-3 d-block"
+                                                style=" font-size: 20px;" id="increase">
+                                            </div>
+                                            <hr>
 
                                             <button onclick="decreaseStartClock(decreaseTimeObj)" type="button"
                                                 class="btn btn-primary">Decrease New Start</button>
@@ -73,16 +84,8 @@
                                                 class="btn btn-success">Continue Start</button>
 
                                             <div class="badge badge-info text-wrap p-3 my-3 d-block"
-                                                style=" font-size: 20px;" id="decrease"></div>
-
-                                            <button onclick="increaseStartClock(increasetimeObj)" type="button"
-                                                class="btn btn-primary">Increase New Start</button>
-                                            <button onclick="increaseStartClock(increaseStopTimeObj)" type="button"
-                                                class="btn btn-danger">Increase Puase</button>
-                                            <button onclick="continueAfterPauseClock(increasetimeObj)" type="button"
-                                                class="btn btn-success">Continue Start</button>
-                                            <div class="badge badge-info text-wrap p-3 my-3 d-block"
-                                                style=" font-size: 20px;" id="increase"></div>
+                                                style=" font-size: 20px;" id="decrease">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
