@@ -38,7 +38,11 @@
             key: "increaseSetTime"
         }
 
-      const newEventClock=()=>  eventClock();
+        const newEventClock = () => eventClock();
+
+
+
+
     </script>
     <div class="container">
         <div class="row">
@@ -57,7 +61,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <button  onclick="newEventClock()" type="button"
+                                                <button onclick="newEventClock()" type="button"
                                                     class="btn btn-primary my-2">View
                                                     Start Clock
                                                 </button>
@@ -65,24 +69,43 @@
                                                     style=" font-size: 20px;" id="eventClock"></div>
                                             </div>
                                             <hr>
-                                            <button onclick="increaseStartClock(increasetimeObj)" type="button"
-                                                class="btn btn-primary">Increase New Start</button>
-                                            <button onclick="increaseStartClock(increaseStopTimeObj)" type="button"
-                                                class="btn btn-danger">Increase Puase</button>
-                                            <button onclick="continueAfterPauseClock(increasetimeObj)" type="button"
-                                                class="btn btn-success">Continue Start</button>
+                                            <div class="text-center">
+                                                <button onclick="increaseStartClock(increasetimeObj)" type="button"
+                                                    class="btn btn-primary">Increase New Start</button>
+                                                <button onclick="increaseStartClock(increaseStopTimeObj)" type="button"
+                                                    class="btn btn-danger">Increase Puase</button>
+                                                <button onclick="continueAfterPauseClock(increasetimeObj)" type="button"
+                                                    class="btn btn-success">Continue Start</button>
+                                            </div>
                                             <div class="badge badge-info text-wrap p-3 my-3 d-block"
                                                 style=" font-size: 20px;" id="increase">
                                             </div>
                                             <hr>
-
-                                            <button onclick="decreaseStartClock(decreaseTimeObj)" type="button"
-                                                class="btn btn-primary">Decrease New Start</button>
-                                            <button onclick="decreaseStartClock(decreaseStopTimeObj)" type="button"
-                                                class="btn btn-danger">Decrease Puase</button>
-                                            <button onclick="continueAfterPauseClock(decreaseTimeObj)" type="button"
-                                                class="btn btn-success">Continue Start</button>
-
+                                            <form class="needs-validation" novalidate>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        <label for="Hours">Hours</label>
+                                                        <div id="selectHours"></div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="Minutes">Minutes</label>
+                                                        <div id="selectMinutes"></div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="Secounds">Secounds</label>
+                                                        <div id="selectSecounds"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" onclick="decreaseStartClock(decreaseTimeObj)"
+                                                        type="button" class="btn btn-primary">Decrease New
+                                                        Start</button>
+                                                    <button onclick="decreaseStartClock(decreaseStopTimeObj)"
+                                                        type="button" class="btn btn-danger">Decrease Puase</button>
+                                                    <button onclick="continueAfterPauseClock(decreaseTimeObj)"
+                                                        type="button" class="btn btn-success">Continue Start</button>
+                                                </div>
+                                            </form>
                                             <div class="badge badge-info text-wrap p-3 my-3 d-block"
                                                 style=" font-size: 20px;" id="decrease">
                                             </div>
@@ -97,6 +120,33 @@
         </div>
     </div>
     </div>
+
+    <script>
+        let allHours = "<select class='form-control'>"
+        let allMinutes = "<select class='form-control'>"
+        let allSecounds = "<select class='form-control'>"
+        for (let i = 1; i <=60 ; i++) {
+            if (i<=24) {
+                allHours += `<option value=${i} class="custom-select mr-sm-2" >${i}</option>`
+            }
+            if (i<60) {
+                allMinutes += `<option value=${i} class="custom-select mr-sm-2" >${i}</option>`
+                allSecounds += `<option value=${i} class="custom-select mr-sm-2" >${i}</option>`
+            }
+        }
+            allHours += "</select>"
+            allMinutes += "</select>"
+            allSecounds += "</select>"
+
+        var selectHours = document.getElementById('selectHours');
+        var selectMinutes = document.getElementById('selectMinutes');
+        var selectSecounds = document.getElementById('selectSecounds');
+
+        selectHours.innerHTML = allHours;
+        selectMinutes.innerHTML = selectMinutes;
+        selectSecounds.innerHTML = selectSecounds;
+
+    </script>
     <script src="./lib/library.js"></script>
 </body>
 
