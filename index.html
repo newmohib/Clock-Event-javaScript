@@ -10,39 +10,7 @@
 </head>
 
 <body>
-    <script>
-        var decreaseTimeObj = {
-            hours: 01,
-            minutes: 01,
-            secounds: 10,
-            isStart: true,
-            elementId: "decrease",
-            key: "decreaseSetTime"
-        }
-        var decreaseStopTimeObj = {
-            isStart: false,
-            elementId: "decrease",
-            key: "decreaseSetTime"
-        }
-        var increasetimeObj = {
-            hours: 01,
-            minutes: 58,
-            secounds: 55,
-            isStart: true,
-            elementId: "increase",
-            key: "increaseSetTime"
-        }
-        var increaseStopTimeObj = {
-            isStart: false,
-            elementId: "increase",
-            key: "increaseSetTime"
-        }
 
-        const newEventClock = () => eventClock();
-
-
-
-    </script>
     <div class="container">
         <div class="row">
             <div class="col-12 ">
@@ -69,18 +37,18 @@
                                             </div>
                                             <hr>
                                             <div class="text-center">
-                                                <button onclick="increaseStartClock(increasetimeObj)" type="button"
+                                                <button id="incStart1" onclick="increaseStart('incStart',1)" type="button"
                                                     class="btn btn-primary">Increase New Start</button>
-                                                <button onclick="increaseStartClock(increaseStopTimeObj)" type="button"
+                                                <button id="incStop1" onclick="increaseStop('incStop',1)" type="button"
                                                     class="btn btn-danger">Increase Puase</button>
-                                                <button onclick="continueAfterPauseClock(increasetimeObj)" type="button"
-                                                    class="btn btn-success">Continue Start</button>
+                                                <button id="incContinue1" onclick="increasePause('incContinue',1)"
+                                                    type="button" class="btn btn-success">Continue Start</button>
                                             </div>
                                             <div class="badge badge-info text-wrap p-3 my-3 d-block"
                                                 style=" font-size: 20px;" id="increase">
                                             </div>
                                             <hr>
-                                            <form name="decreaseTime"class="needs-validation" novalidate>
+                                            <form name="decreaseTime">
                                                 <div class="form-row">
                                                     <div class="form-group col-md-4">
                                                         <label for="Hours">Hours</label>
@@ -96,13 +64,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <button type="submit" onclick="decreaseStartClock(decreaseTimeObj)"
-                                                        type="button" class="btn btn-primary">Decrease New
+                                                    <button id="decStart2" onclick="submitForm('decStart',2)" type="button"
+                                                        class="btn btn-primary">Decrease New
                                                         Start</button>
-                                                    <button onclick="decreaseStartClock(decreaseStopTimeObj)"
-                                                        type="button" class="btn btn-danger">Decrease Puase</button>
-                                                    <button onclick="continueAfterPauseClock(decreaseTimeObj)"
-                                                        type="button" class="btn btn-success">Continue Start</button>
+                                                    <button id="decPause2" onclick="decreaseStart('decPause',2)" type="button"
+                                                        class="btn btn-danger">Decrease Puase</button>
+                                                    <button id="decContinue2" onclick="increaseContinue('decContinue',2)" type="button"
+                                                        class="btn btn-success">Continue Start</button>
                                                 </div>
                                             </form>
                                             <div class="badge badge-info text-wrap p-3 my-3 d-block"
@@ -125,28 +93,88 @@
         var allMinutes = "<select class='form-control' name='minutes'>"
         var allSecounds = "<select class='form-control' name='secounds'>"
 
-        for (let i = 0; i <=60 ; i++) {
-            let number= i<10? "0"+i:i
-
-            if (i<=24) {
-                allHours += `<option value=${i} class="custom-select mr-sm-2" >${number}</option>`
-            }
-            if (i<60) {
+        for (let i = 0; i < 60; i++) {
+            let number = i < 10 ? "0" + i : i
+            if (i < 24) { allHours += `<option value=${i} class="custom-select mr-sm-2" >${number}</option>` }
+            if (i < 60) {
                 allMinutes += `<option value=${i} class="custom-select mr-sm-2" >${number}</option>`
                 allSecounds += `<option value=${i} class="custom-select mr-sm-2" >${number}</option>`
             }
         }
-            allHours += "</select>"
-            allMinutes += "</select>"
-            allSecounds += "</select>"
-
+        allHours += "</select>"
+        allMinutes += "</select>"
+        allSecounds += "</select>"
         var selectHours = document.getElementById('selectHours');
         var selectMinutes = document.getElementById('selectMinutes');
         var selectSecounds = document.getElementById('selectSecounds');
-
         selectHours.innerHTML = allHours;
         selectMinutes.innerHTML = allMinutes;
         selectSecounds.innerHTML = allSecounds;
+        var decreaseTimeObj = {
+            hours: 00,
+            minutes: 01,
+            secounds: 00,
+            isStart: true,
+            elementId: "decrease",
+            key: "decreaseSetTime"
+        }
+        var decreaseStopTimeObj = {
+            isStart: false,
+            elementId: "decrease",
+            key: "decreaseSetTime"
+        }
+        var increasetimeObj = {
+            hours: 23,
+            minutes: 59,
+            secounds: 55,
+            isStart: true,
+            elementId: "increase",
+            key: "increaseSetTime"
+        }
+        var increaseStopTimeObj = {
+            isStart: false,
+            elementId: "increase",
+            key: "increaseSetTime"
+        }
+
+        var increaseId = ""
+        var decrease = ""
+        const setAtt = (id,num) => {
+                if (num==1 && increaseId !="") {
+                    document.querySelector(increaseId).removeAttribute("disabled");
+                }
+                if (num==2 && decrease !="") {
+                    document.querySelector(decrease).removeAttribute("disabled");
+                }
+               if(num==1){
+                   increaseId= '#'+id+num ;
+                    document.querySelector('#'+ id+num).setAttribute("disabled", "");
+                }
+               if(num==2){ 
+                   decrease= '#'+id+num ;
+                   document.querySelector(decrease).removeAttribute("disabled");
+                   document.querySelector('#'+ id+num).setAttribute("disabled", "");
+                };
+            document.querySelector('#'+ id+num).setAttribute("disabled", "");
+        }
+        const increaseStart = (id,num) => { setAtt(id,num); increaseStartClock(increasetimeObj) };
+        const increaseStop = (id,num) => { setAtt(id,num); increaseStartClock(increaseStopTimeObj) };
+        const increasePause = (id,num) => { setAtt(id,num); continueAfterPauseClock(increasetimeObj) };
+        const decreaseStart = (id,num) =>     { setAtt(id,num); decreaseStartClock(decreaseStopTimeObj)};
+        const increaseContinue = (id,num) =>  { setAtt(id,num); continueAfterPauseClock(decreaseTimeObj)};
+
+        const newEventClock = () => eventClock();
+        const submitForm = () => {
+            let elements = document.forms.decreaseTime
+            let hours = Number(elements.hours.value);
+            let minutes = Number(elements.minutes.value);
+            let secounds = Number(elements.secounds.value);
+            decreaseTimeObj = { ...decreaseTimeObj, hours, minutes, secounds };
+            console.log(decreaseTimeObj);
+            decreaseStartClock(decreaseTimeObj);
+        };
+
+
 
     </script>
     <script src="./lib/library.js"></script>
