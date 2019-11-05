@@ -42,7 +42,6 @@
 
 
 
-
     </script>
     <div class="container">
         <div class="row">
@@ -81,7 +80,7 @@
                                                 style=" font-size: 20px;" id="increase">
                                             </div>
                                             <hr>
-                                            <form class="needs-validation" novalidate>
+                                            <form name="decreaseTime"class="needs-validation" novalidate>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-4">
                                                         <label for="Hours">Hours</label>
@@ -122,16 +121,19 @@
     </div>
 
     <script>
-        let allHours = "<select class='form-control'>"
-        let allMinutes = "<select class='form-control'>"
-        let allSecounds = "<select class='form-control'>"
-        for (let i = 1; i <=60 ; i++) {
+        var allHours = "<select class='form-control' name='hours'>"
+        var allMinutes = "<select class='form-control' name='minutes'>"
+        var allSecounds = "<select class='form-control' name='secounds'>"
+
+        for (let i = 0; i <=60 ; i++) {
+            let number= i<10? "0"+i:i
+
             if (i<=24) {
-                allHours += `<option value=${i} class="custom-select mr-sm-2" >${i}</option>`
+                allHours += `<option value=${i} class="custom-select mr-sm-2" >${number}</option>`
             }
             if (i<60) {
-                allMinutes += `<option value=${i} class="custom-select mr-sm-2" >${i}</option>`
-                allSecounds += `<option value=${i} class="custom-select mr-sm-2" >${i}</option>`
+                allMinutes += `<option value=${i} class="custom-select mr-sm-2" >${number}</option>`
+                allSecounds += `<option value=${i} class="custom-select mr-sm-2" >${number}</option>`
             }
         }
             allHours += "</select>"
@@ -143,8 +145,8 @@
         var selectSecounds = document.getElementById('selectSecounds');
 
         selectHours.innerHTML = allHours;
-        selectMinutes.innerHTML = selectMinutes;
-        selectSecounds.innerHTML = selectSecounds;
+        selectMinutes.innerHTML = allMinutes;
+        selectSecounds.innerHTML = allSecounds;
 
     </script>
     <script src="./lib/library.js"></script>
